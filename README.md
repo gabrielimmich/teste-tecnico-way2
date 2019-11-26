@@ -10,7 +10,7 @@ Esta aplicação se propõe a buscar palavras em uma API tendo como parametro um
 
 Exemplos:
 
-**Palavra: ** enxaqueca
+**Palavra:** enxaqueca
 
 **1. Fibonacci**
 O primeiro passo para encontrar o índice da palavra enxaqueca é encontrar um range onde esta palavra se encaixa para isso aplica-se a fórmula de Fibonacci, testando incrementalmente até encontrar uma palavra maior do que a palavra desejada.
@@ -46,7 +46,7 @@ O próximo passo para encontrar o índice é realizar uma operação de busca bi
 | 19  | 8678 | 8680  | 8682  | enxerto      | ![#1589F0](https://placehold.it/15/1589F0/000000?text=+) `Maior`      |
 | 20  | 8678 | 8679  | 8680  | enxaqueca    | ![#2ecc71](https://placehold.it/15/2ecc71/000000?text=+) `Encontrado` |
 
-**Total de pandas mortos para a palavra enxaqueca: ** 20
+**Total de pandas mortos para a palavra enxaqueca:** 20
 
 ## **Uso da aplicação**
 
