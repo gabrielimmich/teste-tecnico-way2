@@ -26,7 +26,7 @@ namespace TesteTecnicoWay2Tests
         }
 
         [Theory]
-        [InlineData("Cristina2", -1)] // Deveria estar em 242 se existisse 
+        [InlineData("Cristina2", -1)]
         public void DeveRetornarMenos1EmPalavrasInexistentes(string palavra, int indiceAssert)
         {
             var buscadorService = new BuscadorPalavraService(new ApiServiceMock(), palavra, 10);
