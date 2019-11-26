@@ -38,8 +38,10 @@ namespace TesteTecnicoWay2Tests
 
         [Theory]
         [InlineData("David", 14)]
-        [InlineData("Desdêmona", 11)]
-        [InlineData("doze", 16)]
+        [InlineData("Desdêmona", 14)]
+        [InlineData("doze", 17)]
+        [InlineData("Baleares", 6)]
+        [InlineData("Enéias", 8)]
         public void DeveRetornarNumeroPandasMortos(string palavra, int quantidadePandasMortos)
         {
             var buscadorService = new BuscadorPalavraService(new ApiServiceMock(), palavra, 10);

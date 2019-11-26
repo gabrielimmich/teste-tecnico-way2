@@ -20,14 +20,19 @@ namespace TesteTecnicoWay2Console.Services
             var request = new RestRequest("/values/{id}", Method.GET);
             request.AddUrlSegment("id", indice);
 
-            var content = JsonConvert.DeserializeObject<string>(_client.Execute(request).Content);
+            var response = _client.Execute(request);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                return null;
+            }
+
+            var content = JsonConvert.DeserializeObject<string>(response.Content);
 
             if (content == "oops ʕ•͡ᴥ•ʔ")
             {
                 return null;
             }
-
-
 
             return content;
         }

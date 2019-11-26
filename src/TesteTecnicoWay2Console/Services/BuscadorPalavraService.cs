@@ -23,27 +23,22 @@ namespace TesteTecnicoWay2Console.Services
             return string.Compare(_palavra, palavraApi, StringComparison.Ordinal);
         }
 
-        private (int Minimo, int Maximo) EncontrarRange()
+        private (int Minimo, int Maximo) EncontrarRange(int min, int max)
         {
-            var min = 0;
-            var max = _indiceMaximoInicial;
-
             var palavraApi = _apiService.BuscarPalavraPorIndice(max);
+
             _totalPandasMortos++;
 
-            while (CompararPalavra(palavraApi) > 0)
+            if (CompararPalavra(palavraApi) == 0)
             {
-                int temp = min == 0 ? max : min;
-                min = max;
-                max += temp;
+                return (-1, max);
+            }
 
-                palavraApi = _apiService.BuscarPalavraPorIndice(max);
-                _totalPandasMortos++;
+            if (!string.IsNullOrEmpty(palavraApi) && CompararPalavra(palavraApi) > 0)
+            {
+                var proximaBusca = min == 0 ? max + max : min + max;
 
-                if (string.IsNullOrEmpty(palavraApi))
-                {
-                    break;
-                }
+                return EncontrarRange(max, proximaBusca);
             }
 
             return (min, max);
@@ -74,7 +69,12 @@ namespace TesteTecnicoWay2Console.Services
 
         public (int Indice, int PandasMortos) Buscar()
         {
-            var (Minimo, Maximo) = EncontrarRange();
+            var (Minimo, Maximo) = EncontrarRange(0, _indiceMaximoInicial);
+
+            if (Minimo == -1)
+            {
+                return (Maximo, _totalPandasMortos);
+            }
 
             return (AplicarBuscaBinaria(Minimo, Maximo), _totalPandasMortos);
         }

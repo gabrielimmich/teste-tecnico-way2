@@ -5,10 +5,16 @@ namespace TesteTecnicoWay2Console
 {
     class Program
     {
-        static void Main(string[] args)
+        private static string LerPalavra()
         {
             Console.Write("-> Escolha uma palavra: ");
-            var palavra = Console.ReadLine();
+
+            return Console.ReadLine();
+        }
+
+        static void Main(string[] args)
+        {
+            var palavra = LerPalavra();
 
             while (!string.IsNullOrEmpty(palavra))
             {
@@ -18,11 +24,17 @@ namespace TesteTecnicoWay2Console
 
                 var (indice, totalDePandasMortos) = buscadorPalavraService.Buscar();
 
-                Console.WriteLine($"* O índice da palavra \"{palavra}\" é: {indice}");
-                Console.WriteLine($"* O total de pandas mortos para a palavra \"{palavra}\" é: {totalDePandasMortos}\n");
+                if (indice >= 0)
+                {
+                    Console.WriteLine($"* O índice da palavra \"{palavra}\" é: {indice}.");
+                }
+                else
+                {
+                    Console.WriteLine($"* A palavra \"{palavra}\" não existe no dicionário.");
+                }
 
-                Console.Write("-> Escolha uma palavra: ");
-                palavra = Console.ReadLine();
+                Console.WriteLine($"* O total de pandas mortos para a palavra \"{palavra}\" é: {totalDePandasMortos}\n");
+                palavra = LerPalavra();
             }
         }
     }
